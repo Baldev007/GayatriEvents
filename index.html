@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gayatri Events</title>
+    <style>
+        /* CSS Reset & General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Floating Top Contact Banner */
+        .top-banner {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            font-size: 0.875rem;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .banner-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .banner-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .banner-wa-link {
+            color: #25d366;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .banner-wa-link:hover {
+            color: #1eb956;
+            text-decoration: underline;
+        }
+
+        .banner-contact-btn {
+            background-color: #e65100;
+            color: #ffffff;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .banner-contact-btn:hover {
+            background-color: #c63f00;
+        }
+
+        /* Navigation Header */
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 41px; /* Positioned directly below the floating top banner */
+            z-index: 999;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Left-Aligned Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #e65100;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.45)), 
+                        url(images/hero.jpg);
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 24px;
+            color: #cbd5e1;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.875rem;
+            color: #0f172a;
+            margin-bottom: 30px;
+        }
+
+        /* About Us Section */
+        .about-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 1.875rem;
+            color: #0d47a1;
+            margin-bottom: 16px;
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+            color: #475569;
+        }
+
+        .about-highlights {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .about-highlights li {
+            background-color: #f1f5f9;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            margin-bottom: 60px;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .leader-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .leader-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0d47a1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 16px;
+            display: block;
+        }
+
+        .leader-name {
+            font-size: 1.35rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .leader-title {
+            font-size: 0.95rem;
+            color: #e65100;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .leader-bio {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #0d47a1;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-top-color: #e65100;
+        }
+
+        .service-card h3 {
+            color: #0d47a1;
+            margin-bottom: 12px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            margin-top: 60px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #ffffff;
+            padding: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+/* Expandable Gallery Accordion */
+.gallery-accordion {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-toggle-btn {
+    padding: 18px 24px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0d47a1;
+    background-color: #f8fafc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none; /* Removes default disclosure triangle */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.gallery-toggle-btn::-webkit-details-marker {
+    display: none; /* Removes default triangle in Chrome/Safari */
+}
+
+.gallery-toggle-btn:hover {
+    background-color: #f1f5f9;
+    color: #e65100;
+}
+
+/* Rotate arrow when opened */
+.gallery-accordion[open] .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+}
+
+/* Padding inside the opened gallery grid */
+.gallery-accordion[open] .gallery-grid {
+    padding: 24px;
+}
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: #0d47a1;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .contact-details li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .whatsapp-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #25d366;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .whatsapp-contact-btn:hover {
+            background-color: #1eb956;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #0d47a1;
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+        }
+
+        .submit-btn {
+            background-color: #0d47a1;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0a367d;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #ffffff;
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            z-index: 1001;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #1eb956;
+            transform: scale(1.05);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 24px 20px;
+            margin-top: 60px;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                top: 0;
+            }
+            .about-section,
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .top-banner {
+                flex-direction: column;
+                text-align: center;
+                position: relative; /* Normal flow on mobile to preserve screen space */
+            }
+            .banner-info {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .whatsapp-float span {
+                display: none;
+            }
+            .whatsapp-float {
+                padding: 14px;
+                border-radius: 50%;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919337890986?text=Hello%20Gayatri%20Events,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        <span class="whatsapp-icon">💬</span>
+        <span>Chat on WhatsApp</span>
+    </a>
+
+    <!-- Floating Top Contact Banner -->
+    <div class="top-banner">
+        <div class="banner-info">
+            <span>📍Bisoi, Mayurbhanj, Odisha</span>
+            <span>
+                📞 +91-9337890986
+<span>
+
+                💬 +91-7655854515   </span>
+            </span>
+            <span>✉️ Email: <a href="mailto:info@gayatrievents.com" style="color: #e2e8f0; text-decoration: underline;">info@gayatrievents.com</a></span>
+            
+        </div>
+        <a href="#contact" class="banner-contact-btn">Contact Us</a>
+    </div>
+
+    <!-- Header Navigation with Image Logo on Left -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo-container">
+                <img src="images/logo.png" alt="Gayatri Events Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Making Your Events Unforgettable</h1>
+        <p>Complete event planning, catering, tent decoration, lighting, and management services tailored for every celebration.</p>
+        <a href="#contact" class="banner-contact-btn" style="padding: 10px 24px; font-size: 1rem;">Book Now</a>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- About Us Section -->
+        <section class="about-section" id="about">
+            <div class="about-content">
+                <h2>About Gayatri Events</h2>
+                <p>Welcome to Gayatri Events, your premier event management, catering, and tent house service provider in Bisoi, Mayurbhanj. We specialize in bringing your celebration visions to life with creative setup design, delicious dining experiences, and reliable execution.</p>
+                <p>Whether it is a wedding, birthday party, corporate function, or cultural event, our experienced team provides high-quality catering, tent setups, decorative lighting, stage design, and floral decor.</p>
+                <ul class="about-highlights">
+                    <li>🍽️ Full Catering Services</li>
+                    <li>✨ Custom Stage Designs</li>
+                    <li>💡 High-Quality Lighting</li>
+                    <li>⛺ Complete Tent Setups</li>
+		    <li>🎥 HD Videography & Photo</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Gayatri Events Management">
+            </div>
+        </section>
+
+        <!-- Leadership Section (Founder & CEO) -->
+        <section class="leadership-section" id="leadership">
+            <h2 class="section-title">Leadership Team</h2>
+            <div class="leadership-grid">
+                <!-- Founder Card -->
+                <div class="leader-card">
+                    <img src="images/founder.jpeg" alt="Founder Photograph" class="leader-img">
+                    <div class="leader-name">Mr. Rama Chandra Bindhani(Jhulu)</div>
+                    <div class="leader-title">Founder</div>
+                    <p class="leader-bio">Established Gayatri Events with a vision to deliver exceptional event and decoration services to the community of Bisoi and Mayurbhanj.</p>
+                </div>
+
+                <!-- CEO Card -->
+                <div class="leader-card">
+                    <img src="images/ceo.jpg" alt="CEO Photograph" class="leader-img">
+                    <div class="leader-name">Mr. Baldev Bindhani</div>
+                    <div class="leader-title">Chief Executive Officer (CEO)</div>
+                    <p class="leader-bio">Leading strategic operations, customer satisfaction, and service delivery to ensure every celebration is seamlessly executed.</p>
+                </div>
+            </div>
+        </section>
+
+        
+<!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+<!-- This is the 1st Service Added -->
+
+                <div class="service-card">
+               <h3>STAGE & TENT SETUP</h3>
+                    <p>Professional tent house, stage setups, and custom seating arrangements for marriages and large gatherings.</p>     
+                </div>
+
+<!-- This is the 2nd Service Added -->
+
+              <div class="service-card">     
+              <h3>CATERING SERVICES</h3>
+              <p>Delicious veg and non-veg menu options customized for weddings, parties, and corporate events with professional buffet setup.</p>
+               </div>
+
+<!-- This is the 3rd Service Added -->
+
+                <div class="service-card">
+                    <h3>LIGHTING & SOUND</h3>
+                    <p>High-quality sound engineering and decorative light setups designed to suit any event atmosphere.</p>
+                </div>
+<!-- This is the 4th Service Added -->
+
+                <div class="service-card">
+                    <h3>DECORATION & DESIGN</h3>
+                    <p>Elegant floral design, entrance gates, and thematic decorations customized to your preferences.</p>
+                </div>
+
+<!-- This is the 5th Service Added -->
+
+<div class="service-card">
+                    <h3>VIDEOGRAPHY & PHOTOGRAPHY</h3>
+                    <p>Professional wedding videography, HD event coverage, cinematic shoots, and photography to capture every memorable moment.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <!-- Gallery Section -->
+<section class="gallery-section" id="gallery">
+    <h2 class="section-title">Photo Gallery</h2>
+    
+    <!-- Always Visible Featured Photos -->
+    <div class="gallery-grid" style="margin-bottom: 24px;">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80" alt="Catering & Buffet Setup">
+            <div class="gallery-caption">Catering & Buffet Setup</div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/wedding.jpg" alt="Wedding Stage Decoration">
+            <div class="gallery-caption">Wedding Stage Decoration</div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/light.jpg" alt="Decorative Light Setup">
+            <div class="gallery-caption">Decorative Light Setup</div>
+        </div>
+        <div class="gallery-item">
+<<<<<<< HEAD
+            <img src="images/waiting.jpg" alt="Tent House & Seating">
+=======
+            <img src="images/gallery-4.jpg" alt="Tent House & Seating">
+>>>>>>> d80ca2fc1223d3d7220d66522a678f0dbbe2ec7a
+            <div class="gallery-caption">Tent House & Seating</div>
+        </div>
+    </div>
+
+    <!-- Expandable Section for More Photos -->
+    <details class="gallery-accordion">
+        <summary class="gallery-toggle-btn">
+            <span>📷 Click to View More Event Photos</span>
+            <span class="toggle-icon">▼</span>
+        </summary>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+<<<<<<< HEAD
+                <img src="images/Photography.jpg" alt="Videography & Camera Setup">
+                <div class="gallery-caption">Videography & Photography</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gal_2.jpg" alt="Flower & Gate Entrance">
+                <div class="gallery-caption">Flower Entrance Decoration</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gal_3.jpg" alt="Sound & Dj Setup">
+                <div class="gallery-caption">Sound Engineering</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gal_1.jpg" alt="Corporate Event Setup">
+=======
+                <img src="images/gallery-5.jpg" alt="Videography & Camera Setup">
+                <div class="gallery-caption">Videography & Photography</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery-6.jpg" alt="Flower & Gate Entrance">
+                <div class="gallery-caption">Flower Entrance Decoration</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery-7.jpg" alt="Sound & Dj Setup">
+                <div class="gallery-caption">Sound Engineering</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery-8.jpg" alt="Corporate Event Setup">
+>>>>>>> d80ca2fc1223d3d7220d66522a678f0dbbe2ec7a
+                <div class="gallery-caption">Corporate Stage Setup</div>
+            </div>
+        </div>
+    </details>
+</section>
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>Planning an event? Reach out to us directly or send a message using the form to receive a quick quote.</p>
+                <ul class="contact-details">
+                    <li>📍 <strong>Address:</strong> Bisoi, Mayurbhanj, Odisha</li>
+                    <li>📞 <strong>Phone:</strong> +91-9337890986, +91-7655854515</li>
+<<<<<<< HEAD
+                    <li>✉️ <strong>Email:</strong> <a href="mailto:info@gayatrievents.com" style="color: #0d47a1; text-decoration: underline;">info@gayatrievents.com</a></li>
+=======
+                    <li>✉️ <strong>Email:</strong> info@gayatrievents.com</li>
+>>>>>>> d80ca2fc1223d3d7220d66522a678f0dbbe2ec7a
+                </ul>
+                <a href="https://wa.me/917655854515?text=Hello%20Gayatri%20Events,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+                   class="whatsapp-contact-btn" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    💬 Message us on WhatsApp (+91-7655854515)
+                </a>
+            </div>
+
+            <form class="contact-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your mobile number">
+                </div>
+                <div class="form-group">
+                    <label for="message">Event Details</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Tell us about your event, catering choices, and date"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Gayatri Events. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
