@@ -309,27 +309,27 @@
         }
 
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
 
-        .gallery-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            background-color: #ffffff;
-        }
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    height: 220px;
+}
 
-        .gallery-item img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
         .gallery-item:hover img {
             transform: scale(1.05);
         }
@@ -577,12 +577,8 @@
     <div class="top-banner">
         <div class="banner-info">
             <span>📍Bisoi, Mayurbhanj, Odisha</span>
-            <span>
-                📞 +91-9337890986
-<span>
-
-                💬 +91-7655854515   </span>
-            </span>
+            <span>📞 +91-9337890986</span>
+            <span>💬 +91-7655854515 </span>
             <span>✉️ Email: <a href="mailto:info@gayatrievents.com" style="color: #e2e8f0; text-decoration: underline;">info@gayatrievents.com</a></span>
             
         </div>
@@ -649,7 +645,7 @@
 
                 <!-- CEO Card -->
                 <div class="leader-card">
-                    <img src="images/ceo.jpg" alt="CEO Photograph" class="leader-img">
+                    <img src="images/CEO_2.jpg" alt="CEO Photograph" class="leader-img">
                     <div class="leader-name">Mr. Baldev Bindhani</div>
                     <div class="leader-title">Chief Executive Officer (CEO)</div>
                     <p class="leader-bio">Leading strategic operations, customer satisfaction, and service delivery to ensure every celebration is seamlessly executed.</p>
@@ -720,7 +716,6 @@
         </div>
         <div class="gallery-item">
             <img src="images/waiting.jpg" alt="Tent House & Seating">
-           <img src="images/gallery-4.jpg" alt="Tent House & Seating">
             <div class="gallery-caption">Tent House & Seating</div>
         </div>
     </div>
@@ -732,38 +727,41 @@
             <span class="toggle-icon">▼</span>
         </summary>
         
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="images/Photography.jpg" alt="Videography & Camera Setup">
-                <div class="gallery-caption">Videography & Photography</div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/gal_2.jpg" alt="Flower & Gate Entrance">
-                <div class="gallery-caption">Flower Entrance Decoration</div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/gal_3.jpg" alt="Sound & Dj Setup">
-                <div class="gallery-caption">Sound Engineering</div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/gal_1.jpg" alt="Corporate Event Setup">
-                <img src="images/gallery-5.jpg" alt="Videography & Camera Setup">
-                <div class="gallery-caption">Videography & Photography</div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/gallery-6.jpg" alt="Flower & Gate Entrance">
-                <div class="gallery-caption">Flower Entrance Decoration</div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/gallery-7.jpg" alt="Sound & Dj Setup">
-                <div class="gallery-caption">Sound Engineering</div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/gallery-8.jpg" alt="Corporate Event Setup">
-                <div class="gallery-caption">Corporate Stage Setup</div>
-            </div>
-        </div>
-    </details>
+        <!-- Replace the expandable <div class="gallery-grid"> section with this: -->
+<div class="gallery-grid">
+    <div class="gallery-item">
+        <img src="images/Photography.jpg" alt="Videography & Camera Setup">
+        <div class="gallery-caption">Videography & Photography</div>
+    </div>
+    <div class="gallery-item">
+        <img src="images/gal_2.jpg" alt="Flower & Gate Entrance">
+        <div class="gallery-caption">Flower Entrance Decoration</div>
+    </div>
+    <div class="gallery-item">
+        <img src="images/gal_3.jpg" alt="Sound & Dj Setup">
+        <div class="gallery-caption">Sound Engineering</div>
+    </div>
+    <div class="gallery-item">
+        <img src="images/gal_1.jpg" alt="Corporate Event Setup">
+        <div class="gallery-caption">Corporate Event Setup</div>
+    </div>
+    <div class="gallery-item">
+        <img src="images/Birthday.jpg" alt="Bithday Decoration">
+        <div class="gallery-caption">Bithday Decoration</div>
+    </div>
+    <div class="gallery-item">
+        <img src="images/Entrance.jpg" alt="Flower & Gate Entrance">
+        <div class="gallery-caption">Flower Entrance Decoration</div>
+    </div>
+    <div class="gallery-item">
+        <img src="images/Gal_4.jpg" alt="Stage">
+        <div class="gallery-caption">Stage</div>
+    </div>
+    <div class="gallery-item">
+        <img src="images/Gal_6.jpg" alt="Entrance">
+        <div class="gallery-caption">Entrance</div>
+    </div>
+</div>    </details>
 </section>
         <!-- Contact Section -->
         <section class="contact-section" id="contact">
