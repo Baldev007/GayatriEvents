@@ -5,6 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gayatri Events</title>
     <style>
+/* Pricing Dropdown Accordion */
+.pricing-accordion {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+}
+
+.pricing-toggle-btn {
+    padding: 18px 24px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0d47a1;
+    background-color: #f8fafc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pricing-toggle-btn::-webkit-details-marker {
+    display: none;
+}
+
+.pricing-toggle-btn:hover {
+    background-color: #f1f5f9;
+    color: #e65100;
+}
+
+.pricing-accordion[open] .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Pricing Table inside Accordion (08/09/2026)*/
+.pricing-table-container {
+    padding: 24px;
+    overflow-x: auto;
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.pricing-table th, 
+.pricing-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pricing-table th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.pricing-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.pricing-item-name {
+    font-weight: 600;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pricing-item-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.pricing-price-tag {
+    color: #e65100;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.pricing-action-btn {
+    background-color: #25d366;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.pricing-action-btn:hover {
+    background-color: #1eb956;
+}
+
         /* CSS Reset & General Styles */
         * {
             margin: 0;
@@ -627,7 +732,7 @@
                 </ul>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Gayatri Events Management">
+                <img src="images/hero1.jpg" alt="Gayatri Events Management">
             </div>
         </section>
 
@@ -695,6 +800,109 @@
             </div>
         </section>
 
+
+<!-- Dropdown Price List Section -->
+<section id="item-rates" style="margin-top: 60px;">
+    <h2 class="section-title">Full Rental & Service Rate List</h2>
+
+    <details class="pricing-accordion">
+        <summary class="pricing-toggle-btn">
+            <span>📋 Click to Expand / Collapse Complete Price List</span>
+            <span class="toggle-icon">▼</span>
+        </summary>
+
+        <div class="pricing-table-container">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Item / Service</th>
+                        <th>Description</th>
+                        <th>Estimated Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Item 1 -->
+                    <tr>
+                        <td>
+                            <div class="pricing-item-name">
+                                <img src="images/waiting.jpg" alt="Wedding Stage" class="pricing-item-thumb">
+                                Royal Wedding Stage Setup
+                            </div>
+                        </td>
+                        <td>Floral backdrop, stage sofa, LED focus lights, entrance gate arch</td>
+                        <td class="pricing-price-tag">₹15,000 Onwards</td>
+                        <td>
+                            <a href="https://wa.me/919337890986?text=Inquiry%20for%20Royal%20Wedding%20Stage%20Setup" target="_blank" class="pricing-action-btn">💬 Book</a>
+                        </td>
+                    </tr>
+
+                    <!-- Item 2 -->
+                    <tr>
+                        <td>
+                            <div class="pricing-item-name">
+                                <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80" alt="Catering" class="pricing-item-thumb">
+                                Veg & Non-Veg Catering
+                            </div>
+                        </td>
+                        <td>Complete buffet counter setup, traditional Odia dishes, serving staff</td>
+                        <td class="pricing-price-tag">₹250 Onwards / Plate</td>
+                        <td>
+                            <a href="https://wa.me/919337890986?text=Inquiry%20for%20Catering%20Services" target="_blank" class="pricing-action-btn">💬 Book</a>
+                        </td>
+                    </tr>
+
+                    <!-- Item 3 -->
+                    <tr>
+                        <td>
+                            <div class="pricing-item-name">
+                                <img src="images/gal_3.jpg" alt="JBL Sound System" class="pricing-item-thumb">
+                                DJ & Sound Setup
+                            </div>
+                        </td>
+                        <td>	Dual JBL bass, tops, operator, cordless mics, mixer console, Parker Lights and many more</td>
+                        <td class="pricing-price-tag">₹2,000 Onwards / day</td>
+                        <td>
+                            <a href="https://wa.me/919337890986?text=Inquiry%20for%20JBL%20Sound%20System" target="_blank" class="pricing-action-btn">💬 Book</a>
+                        </td>
+                    </tr>
+
+                    <!-- Item 4 -->
+                    <tr>
+                        <td>
+                            <div class="pricing-item-name">
+                                <img src="images/light.jpg" alt="Lighting" class="pricing-item-thumb">
+                                Decorative Event Lighting
+                            </div>
+                        </td>
+                        <td>LED par lights, focus lights, pathway gate illumination</td>
+                        <td class="pricing-price-tag">₹5,000 onwards</td>
+                        <td>
+                            <a href="https://wa.me/919337890986?text=Inquiry%20for%20Decorative%20Event%20Lighting" target="_blank" class="pricing-action-btn">💬 Book</a>
+                        </td>
+                    </tr>
+
+                    <!-- Item 5 -->
+                    <tr>
+                        <td>
+                            <div class="pricing-item-name">
+                                <img src="images/Photography.jpg" alt="Videography" class="pricing-item-thumb">
+                                HD Videography & Photography
+                            </div>
+                        </td>
+                        <td>Full event coverage, cinematic video edit, photo album delivery</td>
+                        <td class="pricing-price-tag">₹3000 Onwards </td>
+                        <td>
+                            <a href="https://wa.me/919337890986?text=Inquiry%20for%20Videography%20and%20Photography" target="_blank" class="pricing-action-btn">💬 Book</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </details>
+</section>
+
         <!-- Gallery Section -->
         <!-- Gallery Section -->
 <section class="gallery-section" id="gallery">
@@ -703,7 +911,7 @@
     <!-- Always Visible Featured Photos -->
     <div class="gallery-grid" style="margin-bottom: 24px;">
         <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80" alt="Catering & Buffet Setup">
+            <img src="images/Catering_02.jpg" alt="Catering & Buffet Setup">
             <div class="gallery-caption">Catering & Buffet Setup</div>
         </div>
         <div class="gallery-item">
@@ -728,6 +936,7 @@
         </summary>
         
         <!-- Replace the expandable <div class="gallery-grid"> section with this: -->
+
 <div class="gallery-grid">
     <div class="gallery-item">
         <img src="images/Photography.jpg" alt="Videography & Camera Setup">
@@ -746,8 +955,8 @@
         <div class="gallery-caption">Corporate Event Setup</div>
     </div>
     <div class="gallery-item">
-        <img src="images/Birthday.jpg" alt="Bithday Decoration">
-        <div class="gallery-caption">Bithday Decoration</div>
+        <img src="images/Birthday.jpg" alt="Birthday Decoration">
+        <div class="gallery-caption">Birthday Decoration</div>
     </div>
     <div class="gallery-item">
         <img src="images/Entrance.jpg" alt="Flower & Gate Entrance">
@@ -761,6 +970,23 @@
         <img src="images/Gal_6.jpg" alt="Entrance">
         <div class="gallery-caption">Entrance</div>
     </div>
+<div class="gallery-item">
+        <img src="images/DurgaPuja_Bisoi.jpg" alt="Pendal">
+        <div class="gallery-caption">DurgaPuja Pendal 2026</div>
+    </div>
+<div class="gallery-item">
+        <img src="images/Stage.jpg" alt="Pendal">
+        <div class="gallery-caption">Customized Stage</div>
+    </div>
+<! Video Section>
+<div class="gallery-item" style="height: auto; background: #000;">
+    <video controls width="100%" style="display: block; border-radius: 8px; max-height: 220px; object-fit: cover;" preload="metadata">
+        <source src="images/Road_Ceiling.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="gallery-caption">Road Ceiling</div>
+</div>
+
 </div>    </details>
 </section>
         <!-- Contact Section -->
@@ -772,8 +998,19 @@
                     <li>📍 <strong>Address:</strong> Bisoi, Mayurbhanj, Odisha</li>
                     <li>📞 <strong>Phone:</strong> +91-9337890986, +91-7655854515</li>
                     <li>✉️ <strong>Email:</strong> <a href="mailto:info@gayatrievents.com" style="color: #0d47a1; text-decoration: underline;">info@gayatrievents.com</a></li>
-                    <li>✉️ <strong>Email:</strong> info@gayatrievents.com</li>
                 </ul>
+		 <!-- Embedded Interactive Google Map -->
+	     <div class="map-container">
+              <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.726593922119!2d86.4075234!3d22.1607329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1ddd260036de13%3A0xea56452da5d2374b!2sGayatri%20Events!5e0!3m2!1sen!2sin!4v1725800000000!5m2!1sen!2sin" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade" 
+        title="Gayatri Events Location Map">
+    </iframe>
+</div>
+
+
                 <a href="https://wa.me/917655854515?text=Hello%20Gayatri%20Events,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
                    class="whatsapp-contact-btn" 
                    target="_blank" 
