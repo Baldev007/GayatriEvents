@@ -1019,21 +1019,89 @@
                 </a>
             </div>
 
-            <form class="contact-form" action="#" method="post">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="Enter your mobile number">
-                </div>
-                <div class="form-group">
-                    <label for="message">Event Details</label>
-                    <textarea id="message" name="message" rows="4" required placeholder="Tell us about your event, catering choices, and date"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+<form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+    <!-- Your Web3Forms Access Key -->
+    <input type="hidden" name="access_key" value="aa1015c0-d761-4bc4-8112-c7ed47b3bcd8">
+
+    <!-- Email Subject Line -->
+    <input type="hidden" name="subject" value="New Event Inquiry - Gayatri Events">
+
+    <!-- Honeypot Spam Protection -->
+    <input type="checkbox" name="botcheck" style="display: none;">
+
+    <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone / WhatsApp Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+91-XXXXXXXXXX" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+    </div>
+
+    <div class="form-group">
+        <label for="event_date">Event Date & Type</label>
+        <input type="text" id="event_date" name="event_date" placeholder="e.g., Wedding, Birthday, Puja">
+    </div>
+
+    <div class="form-group">
+        <label for="message">Event Details / Requirements</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell us about your event, guest count, location, and services needed..." required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">Send Inquiry</button>
+    <p id="formResult" style="margin-top: 10px; font-weight: 600; color: #0d47a1;"></p>
+</form>
+
+<script>
+const form = document.getElementById('contactForm');
+const result = document.getElementById('formResult');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+    result.textContent = "";
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: json
+    })
+    .then(async (response) => {
+        let jsonRes = await response.json();
+        if (response.status == 200) {
+            result.style.color = "#16a34a";
+            result.textContent = "Thank you! Your inquiry has been sent to Gayatri Events. We will contact you shortly.";
+            form.reset();
+        } else {
+            result.style.color = "#dc2626";
+            result.textContent = jsonRes.message || "Something went wrong. Please try again or message us on WhatsApp.";
+        }
+    })
+    .catch(() => {
+        result.style.color = "#dc2626";
+        result.textContent = "Network error. Please try again or message us directly on WhatsApp.";
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Inquiry";
+    });
+});
+</script>
         </section>
 
     </main>
@@ -1043,5 +1111,12 @@
         <p>&copy; 2026 Gayatri Events. All rights reserved.</p>
     </footer>
 
+<form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="aa1015c0-d761-4bc4-8112-c7ed47b3bcd8">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit</button>
+</form>
 </body>
 </html>
